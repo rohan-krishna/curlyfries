@@ -6,7 +6,7 @@ Login | Immigration
 
 {% block content %}
 <div class="container">
-	<h3>Immigration Alert : Papers, please!</h3>
+	<h4>Immigration Alert : Papers, please!</h4>
 	<hr>
 	<form action="{% url 'immigration:post_login' %}" method="post">
 		{% csrf_token %}
