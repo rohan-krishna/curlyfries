@@ -22,7 +22,7 @@ gulp.task('build-css', function() {
 		.pipe(gulp.dest('household/static/household/css'));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch',['build-js','build-css'] ,function() {
 	gulp.watch('assets/sass/**/*.scss', ['build-css']);
 	gulp.watch('build.js',['build-js']);
 });

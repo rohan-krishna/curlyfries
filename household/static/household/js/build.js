@@ -46,13 +46,13 @@
 
 	"use strict";
 
-	var _jquery = __webpack_require__(1);
+	__webpack_require__(1);
 
-	var _jquery2 = _interopRequireDefault(_jquery);
+	$(document).ready(function () {
+		console.log("Hello World!");
+	});
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	console.log("Hello World! ");
+	// console.log("Hello World! ")
 
 /***/ },
 /* 1 */
