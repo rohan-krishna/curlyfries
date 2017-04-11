@@ -8,7 +8,8 @@ Login | Immigration
 <div class="container">
 	<h3>Immigration Alert : Papers, please!</h3>
 	<hr>
-	<form>
+	<form action="{% url 'immigration:post_login' %}" method="post">
+		{% csrf_token %}
 		<div class="form-group">
 			<label for="username">User Name: </label>
 			<input type="text" name="username" class="form-control" placeholder="Standard Issue Username">
