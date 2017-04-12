@@ -7,4 +7,5 @@ db.sqlite3
 /node_modules/
 manage.py
 wsgi.py
+/curlyfries/settings/production.py
 
