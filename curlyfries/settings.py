@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'immigration.apps.ImmigrationConfig',
     'household.apps.HouseholdConfig',
+    'bluehexagon.apps.BluehexagonConfig',
 ]
 
 MIDDLEWARE = [

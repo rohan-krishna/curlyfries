@@ -13,7 +13,7 @@ def index(request):
 	# Check for Passport & Valid Documents
 	# If No Visa is stamped, take em to camp .. sorry I mean detain and Interrogate
 	if request.user.is_authenticated:
-		return HttpResponse("Curly Fries Welcomes you! Access is not Guranteed! But you'll get a chance to Apply!")
+		return render(request, "household/index.html", {})
 	else:
 		return HttpResponseRedirect(reverse('immigration:login'))
 

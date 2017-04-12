@@ -17,6 +17,7 @@ from django.conf.urls import url,include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'', include('immigration.urls')),
+	url(r'', include('bluehexagon.urls')),
+    url(r'^immigration/', include('immigration.urls')),
     url(r'^admin/', admin.site.urls),
 ]
