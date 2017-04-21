@@ -1,0 +1,36 @@
+{% load static %}
+<div style="margin-bottom: 1.52em !important;">
+	<div class="journal-nav--wrapper pull-left">
+		<a href="{% url 'centaur:home' %}" style="text-decoration: none; color: inherit;">
+			<i class="fa fa-home wv-icon" id="home"></i>
+		</a>
+
+		<ul>
+			<li>
+				<a href="{% url 'centaur:create' %}">
+					<i class="fa fa-plus wv-icon"></i>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fa fa-paint-brush wv-icon"></i>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fa fa-rocket wv-icon"></i>
+				</a>
+			</li>
+		</ul>
+	</div>
+	
+	<div id="journalLoader">
+		<img src="{% static 'household/images/editor_save_gray.gif' %}" alt="Journal">
+	</div>
+	
+	<div class="pull-right" style="display: flex; align-items: center;">
+		<p>In Love <i class="fa fa-heart love"></i> We Trust</p>
+	</div>
+
+	<h3 class="text-center">:: Journal ::</h3>
+</div>

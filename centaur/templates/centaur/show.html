@@ -1,0 +1,52 @@
+{% extends 'household/master.html' %}
+
+{% block title %}
+	Journal - {{ story.title }}
+{% endblock %}
+
+{% block content %}
+
+	{% include 'centaur/navigation.html' %}
+	
+	<div class="row justify-content-md-center" style="margin-top: 1.52em">
+		<div class="col">
+			<form method="post">
+				{% csrf_token %}
+				<input type="text" 
+						id="titleInput" 
+						name="title" 
+						class="title-input" 
+						placeholder="Inspire Yourself Today!" 
+						autofocus="autofocus" 
+						@change.once="createNewStory" 
+						v-model="title"
+						value="{{ story.title }}">
+				<input type="hidden" name="body">
+				<input type="hidden" name="story">
+				<div id="bodyInput" class="body-input"></div>
+			</form>
+		</div>
+	</div>
+	
+	<a href="{% url 'centaur:delete' story.id %}" style="text-decoration: none; color: #f2f2f2;">
+		<i class="fa fa-trash wv-icon" style="background: #f44336"></i>
+	</a>
+	
+	<p>
+		<form>
+			<div id="storyBody"></div>
+			<input type="hidden" value="{{ story.body }}" id="hiddenBodyInputValue">
+		</form>
+	</p>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.2.3/quill.min.js"></script>
+	<script>
+		var quill = new Quill('#storyBody', {
+			theme : 'bubble'
+		});
+
+		quill.setContents(JSON.parse($('#hiddenBodyInputValue').val()));
+	</script>
+
+{% endblock %}

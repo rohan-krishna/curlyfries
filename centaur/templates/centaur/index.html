@@ -1,0 +1,129 @@
+{% extends 'household/index.html' %}
+
+{% load static %}
+
+{% block title %}
+Journal 
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid" id="journal">
+
+	{% include 'centaur/navigation.html' %}
+
+	<div class="row justify-content-md-center" style="margin-top: 1.52em">
+		<div class="col">
+			<form method="post">
+				{% csrf_token %}
+				<input type="text" 
+						id="titleInput" 
+						name="title" 
+						class="title-input" 
+						placeholder="Inspire Yourself Today!" 
+						autofocus="autofocus" 
+						@change.once="createNewStory" 
+						v-model="title">
+				<input type="hidden" name="body">
+				<input type="hidden" name="story">
+				<div id="bodyInput" class="body-input"></div>
+			</form>
+		</div>
+	</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.2.3/quill.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.6/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	new Vue({
+		el : "#journal",
+		data: {
+			title: "",
+			currentStory: 0,
+			quill: {},
+		},
+		mounted() {
+			this.quill = new Quill('#bodyInput', {
+				theme: 'bubble',
+				placeholder : "Compose an Epic!",
+				modules : {
+					toolbar: [
+					['bold','italic','underline','strike'],
+					[{ 'size' : ['small','normal','large','huge']}],
+					[{ 'header' : [1,2,3] }],
+					[{'list' : 'ordered'},{'list' : 'bullet'}],
+					['link']]
+				}
+			})
+		},
+		watch : {
+			quill() {
+				var Delta = Quill.import('delta');
+				var vm = this;
+
+				var change = new Delta();
+
+				this.quill.on('text-change', function(delta) {
+					change = change.compose(delta);
+				});
+				
+				setInterval(function() {
+					if ( change.length() > 0 && $('[name="story"]').val() != 0  )
+					{
+						$.ajax({
+							url : "updatestory/",
+							method: "post",
+							data: {
+								title : vm.title,
+								body : JSON.stringify(vm.quill.getContents()),
+								csrfmiddlewaretoken : $('[name="csrfmiddlewaretoken"]').val(),
+								story : $('[name="story"]').val()
+							},
+							success : function() {
+								
+								$('#journalLoader img').attr('src','{% static "household/images/editor_save_animation.gif" %}');
+								
+								setInterval(function() {
+									$('#journalLoader img').attr('src','{% static "household/images/editor_save_green.gif" %}');
+								}, 1000)
+							}
+						});
+
+						change = new Delta();
+					}
+				}, 3 * 1000)
+			}
+		},
+		methods: {
+			createNewStory() {
+				// $.post("savenewstory/", { title : this.title, csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val() })
+				
+				$('#journalLoader img').attr('src','{% static "household/images/editor_save_animation.gif" %}');
+
+				$.ajax({
+					url : "savenewstory/",
+					method: "post",
+					data: {
+						title: this.title,
+						csrfmiddlewaretoken : $('[name="csrfmiddlewaretoken"]').val()
+					},
+					success: function(res) {
+						this.currentStory = res.story;
+						$('[name="story"]').val(this.currentStory);
+						$('#journalLoader img').attr('src','{% static "household/images/editor_save_green.gif" %}');
+						// console.log(this.currentStory);
+						// console.log(res.story);
+					}
+				});
+			},
+			updateStory() {
+				// console.log(this.currentStory);
+			}
+		}
+	})
+</script>
+
+{% endblock %}

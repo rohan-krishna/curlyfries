@@ -1,0 +1,26 @@
+{% extends 'household/master.html' %}
+
+{% block title %}
+Login | Immigration
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<h4>Immigration Alert : Papers, please!</h4>
+	<hr>
+	<form action="{% url 'immigration:post_login' %}" method="post">
+		{% csrf_token %}
+		<div class="form-group">
+			<label for="username">User Name: </label>
+			<input type="text" name="username" class="form-control" placeholder="Standard Issue Username">
+		</div>
+		<div class="form-group">
+			<label for="password">Password: </label>
+			<input type="password" name="password" class="form-control" placeholder="Encrypted, Enter Password">
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-success">Process Papers</button>
+		</div>
+	</form>	
+</div>
+{% endblock %}
