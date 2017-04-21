@@ -1,6 +1,6 @@
 *.pyc
 *.swp
 /curlyfries/local_settings.py
-/curlyfries/wsgi.sample.py
+/curlyfries/wsgi.py
 /node_modules
-manage.sample.py
+manage.py
