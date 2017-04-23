@@ -1,11 +1,13 @@
 // special jQuery Import
 window.$ = window.jQuery = require('jquery');
 
+
 // imports
 var Quill = require('quill');
 var QuillDelta = require('quill-delta');
 var Delta = Quill.import('delta');
 var Waves = require('node-waves');
+
 
 // jQuery --------------------
 $(document).ready(function() {

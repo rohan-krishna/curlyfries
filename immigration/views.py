@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate
@@ -19,19 +19,20 @@ def index(request):
 
 def login(request):
 	if not request.user.is_authenticated:
-		return render(request, 'immigration/auth/login.html',{})
+		return render(request, 'immigration/auth/login.html',{ 'next_url' : request.GET['next'] })
 	else:
 		return HttpResponseRedirect(reverse('immigration:index'))
 
 def post_login(request):
 	username = request.POST['username']
 	password = request.POST['password']
+	next_url = request.POST['next_url']
 
 	user = authenticate(username=username, password=password)
 
 	if user is not None:
 		djangoLogin(request, user)
-		return HttpResponseRedirect(reverse('immigration:index'))
+		return redirect(next_url)
 	else:
 		return HttpResponseRedirect(reverse('immigration:index'))
 

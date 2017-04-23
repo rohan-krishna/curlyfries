@@ -30,6 +30,7 @@
     "node-waves": "^0.7.5",
     "quill": "1.2.3",
     "sass-loader": "^6.0.3",
+    "tether": "^1.4.0",
     "uikit": "^3.0.0-beta.21",
     "vue-template-compiler": "^2.2.6",
     "webpack": "^2.3.3"

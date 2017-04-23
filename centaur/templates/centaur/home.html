@@ -11,16 +11,30 @@ Showing All Journals
 	{% include 'centaur/navigation.html' %}
 	
 	<div class="row" id="journalApp" style="margin-top: 1.52em">
-		{% for story in stories %}
-		<div class="col-md-3 journal-card">
-			<a href="{% url 'centaur:show' story.id %}" class="wv-block">
-				<p> -- •• -- </p>
-				<h3>{{ story.title }}</h3>
-				<p></p>
-				<p> ••• </p>
-			</a>
-		</div>
-		{% endfor %}
+		{% if stories %}
+			{% for story in stories %}
+			<div class="col-md-3 journal-card">
+				<a href="{% url 'centaur:show' story.id %}" class="wv-block">
+					<p> -- •• -- </p>
+					<h3>{{ story.title }}</h3>
+					<p></p>
+					<p> ••• </p>
+				</a>
+			</div>
+			{% endfor %}
+		{% else %}
+			<div class="col-md-6 offset-md-3">
+				<div class="jumbotron">
+				  <h1 class="display-3">Hello!</h1>
+				  <p class="lead">It feels lonely here. Why not write a story? Inspire yourself? Maybe?</p>
+				  <hr class="my-4">
+				  <p class="lead">
+				    <a class="btn btn-primary btn-lg" href="{% url 'centaur:create' %}" role="button">Componse An Epic Today!</a>
+				  </p>
+				</div>
+			</div>
+			
+		{% endif %}
 	</div>
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.6/vue.min.js"></script>

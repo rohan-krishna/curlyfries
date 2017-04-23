@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
 	entry: './build.js',
 
@@ -21,6 +23,12 @@ module.exports = {
 			}
 		]
 	},
+	plugins: [
+	    new webpack.ProvidePlugin({
+	      $: 'jquery', jQuery: 'jquery',
+	      Tether: 'tether', tether: 'tether'
+	    }),
+	],
 	vue: {
 		loaders: {
 			js: 'babel-loader'

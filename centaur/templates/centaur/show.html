@@ -1,5 +1,7 @@
 {% extends 'household/master.html' %}
 
+{% load static %}
+
 {% block title %}
 	Journal - {{ story.title }}
 {% endblock %}
@@ -8,45 +10,126 @@
 
 	{% include 'centaur/navigation.html' %}
 	
-	<div class="row justify-content-md-center" style="margin-top: 1.52em">
+	<div class="row justify-content-md-center" style="margin-top: 1.52em" id="journal">
 		<div class="col">
 			<form method="post">
+				
 				{% csrf_token %}
+
 				<input type="text" 
 						id="titleInput" 
 						name="title" 
 						class="title-input" 
 						placeholder="Inspire Yourself Today!" 
 						autofocus="autofocus" 
-						@change.once="createNewStory" 
-						v-model="title"
+						@change="updateStory()" 
 						value="{{ story.title }}">
-				<input type="hidden" name="body">
-				<input type="hidden" name="story">
+
+				<input type="hidden" name="body" value="{{ story.body }}">
+				
+				<input type="hidden" name="story" value="{{ story.id }}">
+				
 				<div id="bodyInput" class="body-input"></div>
 			</form>
 		</div>
 	</div>
 	
-	<a href="{% url 'centaur:delete' story.id %}" style="text-decoration: none; color: #f2f2f2;">
-		<i class="fa fa-trash wv-icon" style="background: #f44336"></i>
-	</a>
-	
-	<p>
-		<form>
-			<div id="storyBody"></div>
-			<input type="hidden" value="{{ story.body }}" id="hiddenBodyInputValue">
-		</form>
-	</p>
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.2.3/quill.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.6/vue.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script>
-		var quill = new Quill('#storyBody', {
-			theme : 'bubble'
-		});
+		new Vue({
+			el : "#journal",
+			data: {
+				currentStory: 0,
+				quill: {},
+			},
+			mounted() {
+				this.quill = new Quill('#bodyInput', {
+					theme: 'bubble',
+					placeholder : "Compose an Epic!",
+					modules : {
+						toolbar: [
+						['bold','italic','underline','strike'],
+						[{ 'size' : ['small','normal','large','huge']}],
+						[{ 'header' : [1,2,3] }],
+						[{'list' : 'ordered'},{'list' : 'bullet'}],
+						['link']]
+					}
+				})
 
-		quill.setContents(JSON.parse($('#hiddenBodyInputValue').val()));
+				this.quill.setContents(JSON.parse($('[name="body"]').val()));
+			},
+			watch : {
+				quill() {
+					var Delta = Quill.import('delta');
+					var vm = this;
+					
+
+					var change = new Delta();
+
+					this.quill.on('text-change', function(delta) {
+						change = change.compose(delta);
+					});
+					
+					setInterval(function() {
+						if ( change.length() > 0 && $('[name="story"]').val() != 0  )
+						{
+							$.ajax({
+								url : base_url + "create/updatestory/",
+								method: "post",
+								data: {
+									title : $('#titleInput').val(),
+									body : JSON.stringify(vm.quill.getContents()),
+									csrfmiddlewaretoken : $('[name="csrfmiddlewaretoken"]').val(),
+									story : $('[name="story"]').val()
+								},
+								success : function() {
+									
+									$('#journalLoader img').attr('src','{% static "household/images/editor_save_animation.gif" %}');
+									
+									setInterval(function() {
+										$('#journalLoader img').attr('src','{% static "household/images/editor_save_green.gif" %}');
+									}, 1000)
+								}
+							});
+
+							change = new Delta();
+						}
+					}, 3 * 1000)
+				}
+			},
+			methods: {
+				updateStory() {
+					// console.log(this.currentStory);
+					
+					var vm = this;
+					var Delta = Quill.import('delta');
+					
+					$.ajax({
+						url : base_url + "create/updatestory/",
+						method: "post",
+						data: {
+							title : $('#titleInput').val(),
+							body : JSON.stringify(vm.quill.getContents()),
+							csrfmiddlewaretoken : $('[name="csrfmiddlewaretoken"]').val(),
+							story : $('[name="story"]').val()
+						},
+						success : function() {
+							
+							$('#journalLoader img').attr('src','{% static "household/images/editor_save_animation.gif" %}');
+							
+							setInterval(function() {
+								$('#journalLoader img').attr('src','{% static "household/images/editor_save_green.gif" %}');
+							}, 1000)
+						}
+					});
+
+					change = new Delta();
+				}
+			}
+		})
 	</script>
 
 {% endblock %}

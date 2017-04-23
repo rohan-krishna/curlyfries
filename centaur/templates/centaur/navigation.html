@@ -6,12 +6,14 @@
 		</a>
 
 		<ul>
+			{% if request.resolver_match.view_name == "centaur:home" %}
 			<li>
 				<a href="{% url 'centaur:create' %}">
 					<i class="fa fa-plus wv-icon"></i>
 				</a>
 			</li>
-			<li>
+			{% endif %}
+<!-- 			<li>
 				<a href="#">
 					<i class="fa fa-paint-brush wv-icon"></i>
 				</a>
@@ -20,16 +22,38 @@
 				<a href="#">
 					<i class="fa fa-rocket wv-icon"></i>
 				</a>
-			</li>
+			</li> -->
 		</ul>
 	</div>
 	
-	<div id="journalLoader">
-		<img src="{% static 'household/images/editor_save_gray.gif' %}" alt="Journal">
-	</div>
+	
+
+	
 	
 	<div class="pull-right" style="display: flex; align-items: center;">
-		<p>In Love <i class="fa fa-heart love"></i> We Trust</p>
+
+		{% if request.resolver_match.view_name == "centaur:create" or request.resolver_match.view_name == "centaur:show" %}
+		<div id="journalLoader" style="order:1; margin: 0 .52em;">
+			<img src="{% static 'household/images/editor_save_gray.gif' %}" alt="Journal">
+		</div>
+		{% endif %}
+		
+		{% if request.resolver_match.view_name == "centaur:show" %}
+		<a href="{% url 'centaur:delete' story.id %}" data-toggle="tooltip" title="Delete!" style="order: 2; margin: 0 .52em;">
+			<i class="fa fa-trash wv-icon" style="background: #f44336;color: #f2f2f2"></i>
+		</a>
+		{% endif %}
+		
+		{% if request.resolver_match.view_name == "centaur:create" or request.resolver_match.view_name == "centaur:show" %}
+		<a href="{% url 'centaur:home' %}" data-toggle="tooltip" title="Done!" style="order: 3; margin: 0 .52em;">
+			<i class="fa fa-check wv-icon" style="background: #4CAF50; color: #f2f2f2;"></i>
+		</a>
+		{% endif %}
+
+		<p style="order: 4; margin: 0 .52em;">In Love <i class="fa fa-heart love"></i> We Trust</p>
+
+		
+	
 	</div>
 
 	<h3 class="text-center">:: Journal ::</h3>
