@@ -7,12 +7,24 @@ Home
 {% block content %}
 
 <div class="container">
+	
 	<h1>Hello World!</h1>
 	<p>Hello {{ user.username }}</p>
-
 	{% if user.is_authenticated %}
 	<a href="{% url 'portfolio:logout' %}">Logout</a>
 	{% endif %}
+	<hr>
+	
+	<div class="row">
+		<div class="col">
+			<div>
+				<div class="hexagon">
+				  <div class="hexTop"></div>
+				  <div class="hexBottom"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 {% endblock %}

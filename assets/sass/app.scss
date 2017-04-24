@@ -28,6 +28,78 @@ Reusable Classes
 		color: #fff;
 	}
 }
+.hexagon {
+  position: relative;
+  width: 256px; 
+  height: 147.80px;
+  margin: 73.90px 0;
+  background-image: url(http://csshexagon.com/img/meow.jpg);
+  background-size: auto 288.6751px;
+  background-position: center;
+  border-left: solid 3px #013165;
+  border-right: solid 3px #013165;
+}
+
+.hexTop,
+.hexBottom {
+  position: absolute;
+  z-index: 1;
+  width: 181.02px;
+  height: 181.02px;
+  overflow: hidden;
+  -webkit-transform: scaleY(0.5774) rotate(-45deg);
+  -ms-transform: scaleY(0.5774) rotate(-45deg);
+  transform: scaleY(0.5774) rotate(-45deg);
+  background: inherit;
+  left: 34.49px;
+}
+
+/*counter transform the bg image on the caps*/
+.hexTop:after,
+.hexBottom:after {
+  content: "";
+  position: absolute;
+  width: 250.0000px;
+  height: 144.33756729740645px;
+  -webkit-transform:  rotate(45deg) scaleY(1.7321) translateY(-72.1688px);
+  -ms-transform:      rotate(45deg) scaleY(1.7321) translateY(-72.1688px);
+  transform:          rotate(45deg) scaleY(1.7321) translateY(-72.1688px);
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  background: inherit;
+}
+
+.hexTop {
+  top: -90.5097px;
+  border-top: solid 4.2426px #013165;
+  border-right: solid 4.2426px #013165;
+}
+
+.hexTop:after {
+  background-position: center top;
+}
+
+.hexBottom {
+  bottom: -90.5097px;
+  border-bottom: solid 4.2426px #013165;
+  border-left: solid 4.2426px #013165;
+}
+
+.hexBottom:after {
+  background-position: center bottom;
+}
+
+.hexagon:after {
+  content: "";
+  position: absolute;
+  top: 1.7321px;
+  left: 0;
+  width: 250.0000px;
+  height: 144.3376px;
+  z-index: 2;
+  background: inherit;
+}
 /*
 ----------------------------
 Journal
