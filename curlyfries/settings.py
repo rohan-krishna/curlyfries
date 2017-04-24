@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'household.apps.HouseholdConfig',
     'bluehexagon.apps.BluehexagonConfig',
     'centaur.apps.CentaurConfig',
+    'portfolio.apps.PortfolioConfig',
 ]
 
 MIDDLEWARE = [

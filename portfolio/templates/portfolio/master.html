@@ -1,0 +1,18 @@
+{% load static %}
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Porfolio</title>
+
+	<!-- Import Foundation -->
+	<link rel="stylesheet" href="{% static 'portfolio/css/foundation.min.css' %}">
+</head>
+<body>
+	
+	{% block content %}
+	{% endblock %}
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="{% static 'portfolio/js/foundation.min.js' %}"></script>
+</body>
+</html>

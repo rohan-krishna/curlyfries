@@ -20,5 +20,6 @@ urlpatterns = [
 	url(r'', include('bluehexagon.urls')),
     url(r'^immigration/', include('immigration.urls')),
     url(r'^journal/', include('centaur.urls')),
+    url(r'^portfolio/', include('portfolio.urls')),
     url(r'^admin/', admin.site.urls),
 ]
