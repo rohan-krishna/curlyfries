@@ -8,5 +8,10 @@ Sign-In or Singup
 
 	<h3>Sign-in or Signup</h3>
 	<hr>
-
+	
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit">Login</button>
+	
+	<a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
 {% endblock %}

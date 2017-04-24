@@ -1,8 +1,18 @@
 {% extends 'household/master.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
 {% block content %}
 
 <div class="container">
 	<h1>Hello World!</h1>
+	<p>Hello {{ user.username }}</p>
+
+	{% if user.is_authenticated %}
+	<a href="{% url 'portfolio:logout' %}">Logout</a>
+	{% endif %}
 </div>
 
 {% endblock %}
