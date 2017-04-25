@@ -1,4 +1,5 @@
 @import "node_modules/bootstrap/scss/bootstrap";
+@import "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.22/css/uikit.css";
 
 body {
 	padding-top: 1.52em; 
@@ -34,10 +35,8 @@ Reusable Classes
   height: 147.80px;
   margin: 73.90px 0;
   background-image: url(http://csshexagon.com/img/meow.jpg);
-  background-size: auto 288.6751px;
+  background-size: auto 295.6033px;
   background-position: center;
-  border-left: solid 3px #013165;
-  border-right: solid 3px #013165;
 }
 
 .hexTop,
@@ -51,7 +50,7 @@ Reusable Classes
   -ms-transform: scaleY(0.5774) rotate(-45deg);
   transform: scaleY(0.5774) rotate(-45deg);
   background: inherit;
-  left: 34.49px;
+  left: 37.49px;
 }
 
 /*counter transform the bg image on the caps*/
@@ -59,11 +58,11 @@ Reusable Classes
 .hexBottom:after {
   content: "";
   position: absolute;
-  width: 250.0000px;
-  height: 144.33756729740645px;
-  -webkit-transform:  rotate(45deg) scaleY(1.7321) translateY(-72.1688px);
-  -ms-transform:      rotate(45deg) scaleY(1.7321) translateY(-72.1688px);
-  transform:          rotate(45deg) scaleY(1.7321) translateY(-72.1688px);
+  width: 256.0000px;
+  height: 147.80166891254422px;
+  -webkit-transform:  rotate(45deg) scaleY(1.7321) translateY(-73.9008px);
+  -ms-transform:      rotate(45deg) scaleY(1.7321) translateY(-73.9008px);
+  transform:          rotate(45deg) scaleY(1.7321) translateY(-73.9008px);
   -webkit-transform-origin: 0 0;
   -ms-transform-origin: 0 0;
   transform-origin: 0 0;
@@ -72,8 +71,6 @@ Reusable Classes
 
 .hexTop {
   top: -90.5097px;
-  border-top: solid 4.2426px #013165;
-  border-right: solid 4.2426px #013165;
 }
 
 .hexTop:after {
@@ -82,8 +79,6 @@ Reusable Classes
 
 .hexBottom {
   bottom: -90.5097px;
-  border-bottom: solid 4.2426px #013165;
-  border-left: solid 4.2426px #013165;
 }
 
 .hexBottom:after {
@@ -93,10 +88,10 @@ Reusable Classes
 .hexagon:after {
   content: "";
   position: absolute;
-  top: 1.7321px;
+  top: 0.0000px;
   left: 0;
-  width: 250.0000px;
-  height: 144.3376px;
+  width: 256.0000px;
+  height: 147.8017px;
   z-index: 2;
   background: inherit;
 }

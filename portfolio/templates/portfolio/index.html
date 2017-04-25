@@ -1,30 +1,62 @@
 {% extends 'household/master.html' %}
 
+{% load static %}
+
 {% block title %}
 Home
 {% endblock %}
 
 {% block content %}
 
-<div class="container">
-	
-	<h1>Hello World!</h1>
-	<p>Hello {{ user.username }}</p>
-	{% if user.is_authenticated %}
-	<a href="{% url 'portfolio:logout' %}">Logout</a>
-	{% endif %}
-	<hr>
-	
-	<div class="row">
-		<div class="col">
-			<div>
-				<div class="hexagon">
-				  <div class="hexTop"></div>
-				  <div class="hexBottom"></div>
+<div class="uk-container-expand">
+	<div class="container" id="portfolioApp">
+		<!-- <h1>Hello World!</h1>
+		<p>Hello {{ user.username }}</p>
+		{% if user.is_authenticated %}
+		<a href="{% url 'portfolio:logout' %}">Logout</a>
+		{% endif %}
+		<hr> -->
+		
+		<div class="row">
+			<div class="col">
+				<div style="display: flex; justify-content: center;">
+					<div class="hexagon">
+					  	<div class="hexTop"></div>
+					  	<div class="hexBottom"></div>
+					</div>
 				</div>
 			</div>
 		</div>
+
+		<hr class="uk-divider-icon">
+
+		<div class="row">
+			<div class="col">
+				<h3>Work Experience</h3>
+				<hr>
+				<div class="uk-container">
+				            <div class="uk-card uk-card-body uk-card-primary">
+				                <h3 class="uk-card-title">Example headline</h3>
+
+				                <button class="uk-button uk-button-default" title="Hello World" uk-tooltip>Hover</button>
+				            </div>
+				        </div>
+			</div>
+			<div class="col">
+				<h3>Technical Skills</h3>
+				<hr>
+			</div>
+		</div>
 	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('.hexagon').css({
+				'background-image' : 'url({% static "household/images/logo_2.svg" %})'
+			}); 
+		})
+	</script>
 </div>
 
 {% endblock %}
