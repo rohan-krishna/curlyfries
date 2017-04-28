@@ -37,6 +37,7 @@ Journal
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.6/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
 <script>
 	new Vue({
 		el : "#journal",
@@ -52,9 +53,10 @@ Journal
 				modules : {
 					toolbar: [
 					['bold','italic','underline','strike'],
-					[{ 'size' : ['small','normal','large','huge']}],
+					[{ 'size' : ['normal']}],
 					[{ 'header' : [1,2,3] }],
-					[{'list' : 'ordered'},{'list' : 'bullet'}],
+					[{'list' : 'bullet'},{'list' : 'ordered'},'align'],
+					['image'],
 					['link']]
 				}
 			})
@@ -85,10 +87,10 @@ Journal
 							success : function() {
 								
 								$('#journalLoader img').attr('src','{% static "household/images/editor_save_animation.gif" %}');
-								
+
 								setInterval(function() {
 									$('#journalLoader img').attr('src','{% static "household/images/editor_save_green.gif" %}');
-								}, 1000)
+								}, 3000)
 							}
 						});
 

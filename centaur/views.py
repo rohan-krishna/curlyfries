@@ -15,7 +15,7 @@ from .models import Story
 @login_required(login_url = 'immigration:login')
 def home(request):
 	me = request.user
-	stories = Story.objects.filter( author=me );
+	stories = Story.objects.filter( author=me ).order_by('-updated_at');
 	return render(request, 'centaur/home.html', { 'stories' : stories })
 # Just show the index
 
