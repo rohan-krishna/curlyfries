@@ -1,6 +1,6 @@
 {% load static %}
-<div style="margin-bottom: 1.52em !important;">
-	<div class="journal-nav--wrapper pull-left">
+<div style="margin-bottom: 1.52em !important;" class="">
+	<div class="journal-nav--wrapper pull-left hidden-md-down">
 		<a href="{% url 'centaur:home' %}" style="text-decoration: none; color: inherit;">
 			<i class="fa fa-home wv-icon" id="home"></i>
 		</a>
@@ -26,10 +26,6 @@
 		</ul>
 	</div>
 	
-	
-
-	
-	
 	<div class="pull-right" style="display: flex; align-items: center;">
 
 		{% if request.resolver_match.view_name == "centaur:create" or request.resolver_match.view_name == "centaur:show" %}
@@ -50,9 +46,7 @@
 		</a>
 		{% endif %}
 
-		<p style="order: 4; margin: 0 .52em;">In Love <i class="fa fa-heart love"></i> We Trust</p>
-
-		
+		<p style="order: 4; margin: 0 .52em;" class="hidden-md-down">In Love <i class="fa fa-heart love"></i> We Trust</p>	
 	
 	</div>
 
