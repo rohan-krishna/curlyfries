@@ -13,7 +13,7 @@ Showing All Journals
 	<div class="row" id="journalApp" style="margin-top: 1.52em">
 		{% if stories %}
 			{% for story in stories %}
-			<div class="col-md-3 journal-card">
+			<div class="col-md-3 col-xs-12 journal-card">
 				<a href="{% url 'centaur:show' story.id %}" class="wv-block">
 					<p> -- •• -- </p>
 					<h3>{{ story.title }}</h3>
@@ -36,22 +36,5 @@ Showing All Journals
 			
 		{% endif %}
 	</div>
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.6/vue.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.1/axios.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.5/waves.min.js"></script>
- 
-	<script>
-		new Vue({
-			el: '#journalApp',
-			data: {
-				message: "Hello World!"
-			},
-			mounted() {
 
-			},
-			created() {
-			}
-		})
-	</script>
 {% endblock %}

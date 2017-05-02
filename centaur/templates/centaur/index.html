@@ -9,35 +9,35 @@ Journal
 {% block content %}
 
 <div class="container-fluid" id="journal">
-
 	{% include 'centaur/navigation.html' %}
-
-	<div class="row justify-content-md-center" style="margin-top: 1.52em">
-		<div class="col">
-			<form method="post">
-				{% csrf_token %}
-				<input type="text" 
-						id="titleInput" 
-						name="title" 
-						class="title-input" 
-						placeholder="Inspire Yourself Today!" 
-						autofocus="autofocus" 
-						@change.once="createNewStory" 
-						v-model="title">
-				<input type="hidden" name="body">
-				<input type="hidden" name="story">
-				<div id="bodyInput" class="body-input"></div>
-			</form>
+	<div class="editor-wrapper">
+		<div class="row">
+			<div class="col-xs-12">
+				<form method="post">
+					{% csrf_token %}
+					<input type="text" 
+							id="titleInput" 
+							name="title" 
+							class="title-input" 
+							placeholder="Inspire Yourself Today!" 
+							autofocus="autofocus" 
+							@change.once="createNewStory" 
+							v-model="title">
+					<input type="hidden" name="body">
+					<input type="hidden" name="story">
+					<div id="bodyInput" class="body-input"></div>
+				</form>
+			</div>
 		</div>
 	</div>
-
 </div>
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.2.3/quill.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.6/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.0/vue.min.js"></script>
 <script>
 	new Vue({
 		el : "#journal",

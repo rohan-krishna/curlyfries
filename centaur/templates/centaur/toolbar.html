@@ -1,0 +1,25 @@
+<v-toolbar class="green">
+  <v-toolbar-side-icon></v-toolbar-side-icon>
+  <v-toolbar-title class="hidden-sm-and-down">
+    Journal
+  </v-toolbar-title>
+  <v-spacer></v-spacer>
+  <v-btn icon dark>
+    <v-icon>account_circle</v-icon>
+  </v-btn>
+  <v-btn icon dark>
+    <v-icon>favorite</v-icon>
+  </v-btn>
+  <v-menu bottom right>
+    <v-btn icon-dark slot="activator" dark>
+      <v-icon>more_vert</v-icon>
+    </v-btn>
+    <v-list>
+      <v-list-item>
+        <v-list-tile>
+          <v-list-tile-title>Item 1</v-list-tile-title>
+        </v-list-tile>
+      </v-list-item>
+    </v-list>
+  </v-menu>
+</v-toolbar>

@@ -1,7 +1,10 @@
-@import "node_modules/bootstrap/scss/bootstrap";
+// @import "node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/normalize-scss/sass/normalize";
+@import "flexboxgrid";
 
 body {
-	padding-top: 1.52em; 
+	// padding-top: 1.52em;
+	font-family : 'Lato', Arial, sans-serif !important; 
 }
 ::selection {
 	background: rgba(76,175,80,0.3);
@@ -11,6 +14,9 @@ body {
 	color: rgba(233,30,99,1);
 }
 
+[v-cloak] {
+	display: none;
+}
 /*
 ----------------------------
 Reusable Classes
@@ -46,8 +52,10 @@ Journal
 
 .ql-editor {
 	padding-left: 0 !important;
+	padding-bottom : 1em !important;
 	font-size: 16px;
 	font-family: 'Lato', Arial, sans-serif;
+	overflow-y : hidden;
 
 	h1 {
 		font-size: 3.0em !important;
@@ -63,11 +71,15 @@ Journal
 	}
 }
 
+.editor-wrapper {
+	overflow: hidden;
+}
+
 .journal-nav--wrapper {
 	display: flex;
 	position: absolute;
 	transition: box-shadow 150ms linear;
-	color: #fff;
+	color: #fff !important;
 	align-items: center;
 
 	&:hover {
@@ -92,7 +104,7 @@ Journal
 
 				i {
 					background: rgba(0,150,136,1);
-					color: #f2f2f2;
+					color: #f2f2f2 !important;
 				}
 			}
 
@@ -123,10 +135,11 @@ Journal
 		padding: 1.52em;
 		text-align: center;
 		background: #333;
-		color : #ddd;
+		color : #ddd !important;
 
 		h3 {
 			margin: 0 !important;
+			color: #f2f2f2 !important;
 		}
 	}
 

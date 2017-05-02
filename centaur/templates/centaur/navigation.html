@@ -1,5 +1,4 @@
-{% load static %}
-<div id="progressBarContainer"></div>
+<!-- {% load static %}
 <div style="margin-bottom: 1.52em !important;">
 	<div class="journal-nav--wrapper pull-left">
 		<a href="{% url 'centaur:home' %}" style="text-decoration: none; color: inherit;">
@@ -14,22 +13,8 @@
 				</a>
 			</li>
 			{% endif %}
-<!-- 			<li>
-				<a href="#">
-					<i class="fa fa-paint-brush wv-icon"></i>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<i class="fa fa-rocket wv-icon"></i>
-				</a>
-			</li> -->
 		</ul>
 	</div>
-	
-	
-
-	
 	
 	<div class="pull-right" style="display: flex; align-items: center;">
 
@@ -59,3 +44,23 @@
 
 	<h3 class="text-center">:: Journal ::</h3>
 </div>
+
+
+ -->
+ <div class="row center-xs">
+ 	<div class="col-xs-12">
+ 		<h3>:: Journal ::</h3>
+ 	</div>
+ 	<div class="col-xs-12">
+ 		{% if request.resolver_match.view_name == "centaur:home" %}
+	 		<a href="{% url 'centaur:create' %}">
+	 			<i class="fa fa-plus wv-icon" style="background: #2196F3; color: #f2f2f2 !important;"></i>
+	 		</a>
+ 		{% endif %}
+ 		{% if request.resolver_match.view_name == "centaur:create" %}
+	 		<a href="{% url 'centaur:home' %}">
+	 			<i class="fa fa-home wv-icon" style="background: #2196F3; color: #f2f2f2 !important;"></i>
+	 		</a>
+ 		{% endif %}
+ 	</div>
+ </div>

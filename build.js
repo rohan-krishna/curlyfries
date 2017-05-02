@@ -8,6 +8,12 @@ var QuillDelta = require('quill-delta');
 var Delta = Quill.import('delta');
 var Waves = require('node-waves');
 
+// Vue & her dependencies
+// var VueMaterial = require('vue-material');
+// import Vuetify from 'vuetify';
+// Vue.use(Vuetify); 
+// Vue.use(VueMaterial);
+
 
 // jQuery --------------------
 $(document).ready(function() {

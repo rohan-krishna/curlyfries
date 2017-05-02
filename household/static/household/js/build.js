@@ -55,6 +55,13 @@
 	var Delta = Quill.import('delta');
 	var Waves = __webpack_require__(14);
 
+	// Vue & her dependencies
+	// var VueMaterial = require('vue-material');
+	// import Vuetify from 'vuetify';
+	// Vue.use(Vuetify); 
+	// Vue.use(VueMaterial);
+
+
 	// jQuery --------------------
 	$(document).ready(function () {
 
