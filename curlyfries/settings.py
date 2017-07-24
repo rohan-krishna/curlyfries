@@ -25,7 +25,7 @@ SECRET_KEY = 's2#z9c)i1pck)7nyf_b7ecw$l=g&pa$we7fq9wpd%@-4&6co^k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'bluehexagon.in']
+ALLOWED_HOSTS = [u'bluehexagon.in',u'localhost']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'bluehexagon.apps.BluehexagonConfig',
     'centaur.apps.CentaurConfig',
     'portfolio.apps.PortfolioConfig',
+    'iosh.apps.IoshConfig',
 ]
 
 MIDDLEWARE = [
@@ -78,23 +79,23 @@ WSGI_APPLICATION = 'curlyfries.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'curlyfries',
-        'USER': 'postgres',
-        'PASSWORD': '30993',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'curlyfries',
+#         'USER': 'postgres',
+#         'PASSWORD': '30993',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
